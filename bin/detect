@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# bin/detect <build-dir>
+
+# Only activate if explicitly requested.
+echo "no"
+exit 1

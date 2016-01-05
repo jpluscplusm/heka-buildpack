@@ -1,0 +1,4 @@
+[hekad]
+maxprocs = 1
+base_dir = "/tmp"
+share_dir = "heka/share/heka"

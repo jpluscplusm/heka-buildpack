@@ -1,0 +1,26 @@
+---
+language: heka
+
+exclude_files:
+  - .git/
+  - .gitignore
+  - .gitmodules
+  - .rspec
+  - cf_spec/
+  - log/
+  - test/
+  - buildpack-packager/
+  - staticfile_buildpack-*v*.zip
+
+url_to_dependency_map:
+  - match: heka.tgz
+    name: heka
+    version: 0.10.0
+
+dependencies:
+  - name: heka
+    version: 0.10.0
+    uri: https://cdn.rawgit.com/jpluscplusm/binaries/master/heka/heka-0_10_0-linux-amd64.tar.gz
+    cf_stacks:
+      - cflinuxfs2
+    md5: 89ff62fe2ccad3d462c9951de0c15e38

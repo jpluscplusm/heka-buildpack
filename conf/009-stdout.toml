@@ -1,0 +1,4 @@
+[PayloadEncoder]
+[LogOutput]
+message_matcher = "TRUE"
+encoder = "PayloadEncoder"

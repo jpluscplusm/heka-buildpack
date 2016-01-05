@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# bin/compile <build-dir> <cache-dir>
+
+[[ ${SHELL_TRACE} ]] && set -x
+set -euo pipefail
+
+BUILD_DIR=${1}
+CACHE_DIR=${2}
+BUILDPACK=$(cd $(dirname ${0})/..; pwd)
+HEKA_TARGET=${BUILD_DIR}/heka
+CONF_TARGET=${HEKA_TARGET}/conf
+CONF_SRC=${BUILDPACK}/conf
+
+${BUILDPACK}/compile-extensions/bin/check_stack_support
+
+source ${BUILDPACK}/bin/common.sh
+
+status "Downloading Heka ..."
+export BUILDPACK_PATH=${BUILDPACK}
+source ${BUILDPACK}/compile-extensions/lib/common
+DOWNLOAD_URL=$(${BUILDPACK}/compile-extensions/bin/download_dependency heka.tgz /tmp)
+TARBALL="/tmp/heka.tgz"
+status "Downloaded '${DOWNLOAD_URL}'."
+
+status "Unpacking Heka ..."
+mkdir -p ${CONF_TARGET} # /Should/ be moot ...
+tar xfz ${TARBALL} --strip-components 1 -C ${HEKA_TARGET}
+
+status "Configuring Heka ..."
+for SRC in ${CONF_SRC}/*; do
+  TARGET="${CONF_TARGET}/$(basename ${SRC})"
+  [[ -r ${TARGET} ]] && cp -n ${SRC} ${TARGET}.overriden-heka-buildpack-default
+  [[ -r ${TARGET} ]] || cp    ${SRC} ${TARGET}
+done
+
+cp -f ${BUILDPACK}/bin/run.sh ${HEKA_TARGET}/
