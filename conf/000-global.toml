@@ -1,4 +1,4 @@
 [hekad]
-maxprocs = 1
-base_dir = "/tmp"
-share_dir = "heka/share/heka"
+maxprocs = %ENV[HEKA_MAX_PROCS]
+base_dir = "%ENV[HEKA_BASE_DIR]"
+share_dir = "%ENV[HEKA_SHARE_DIR]"
