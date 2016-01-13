@@ -18,9 +18,9 @@ This buildpack must be explicitly specified. It's *strongly* suggested you
 reference a specific version of this buildpack, e.g.:
 
 - In a `manifest.yml`:
-  - `buildpack: https://github.com/jpluscplusm/heka-buildpack#v0.0.1`
+  - `buildpack: https://github.com/jpluscplusm/heka-buildpack#v0.0.2`
 - In a `cf push` invocation:
-  - `cf push <APP> -b https://github.com/jpluscplusm/heka-buildpack#v0.0.1`
+  - `cf push <APP> -b https://github.com/jpluscplusm/heka-buildpack#v0.0.2`
 
 ## Implications Of Installing Heka
 
