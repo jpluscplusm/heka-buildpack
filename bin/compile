@@ -29,8 +29,8 @@ tar xfz ${TARBALL} --strip-components 1 -C ${HEKA_TARGET}
 status "Configuring Heka ..."
 for SRC in ${CONF_SRC}/*; do
   TARGET="${CONF_TARGET}/$(basename ${SRC})"
-  [[ -r ${TARGET} ]] && cp -n ${SRC} ${TARGET}.overriden-heka-buildpack-default
-  [[ -r ${TARGET} ]] || cp    ${SRC} ${TARGET}
+  [[ -f ${TARGET} ]] && cp -n ${SRC} ${TARGET}.overriden-heka-buildpack-default
+  [[ -f ${TARGET} ]] || cp    ${SRC} ${TARGET}
 done
 
 cp -f ${BUILDPACK}/bin/run.sh ${HEKA_TARGET}/
