@@ -1,0 +1,13 @@
+[main_process]
+type = "ProcessInput"
+ticker_interval = 0
+immediate_start = true
+stdout = true
+stderr = true
+
+[main_process.command.0]
+bin = "bundle"
+args = ["exec", "puma", "-C", "config/puma.rb"]
+
+[main_process.retries]
+max_retries = 0
