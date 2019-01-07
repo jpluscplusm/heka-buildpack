@@ -20,7 +20,7 @@ url_to_dependency_map:
 dependencies:
   - name: heka
     version: 0.10.0
-    uri: https://cdn.rawgit.com/jpluscplusm/binaries/master/heka/heka-0_10_0-linux-amd64.tar.gz
+    uri: https://cdn.jsdelivr.net/gh/jpluscplusm/binaries@master/heka/heka-0_10_0-linux-amd64.tar.gz
     cf_stacks:
       - cflinuxfs2
     md5: 89ff62fe2ccad3d462c9951de0c15e38
